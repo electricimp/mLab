@@ -2,7 +2,7 @@
 
 The mLab library is a wrapper class for the [mLab](https://mlab.com/) Data API. mLab is a hosted MongoDB as a service, and allows you a variety of options in terms of size, redundancy, etc.
 
-For information about getting started with MongoLab and acquiring your MongoLab API key, see the [mLab Data API](http://docs.mlab.com/data-api/) documentation.
+For information about getting started with mLab and acquiring your mLab API key, see the [mLab Data API](http://docs.mlab.com/data-api/) documentation.
 
 **Note** Although this code is version 1.0.0, it is functionally equivalent to version 2.0.0. of our mongoLab library, which this library replaces. This follows mLabs‘ [rebranding from mongoLabs](http://blog.mlab.com/2016/02/mongolab-is-now-mlab/).
 
