@@ -1,9 +1,8 @@
-// Copyright (c) 2015-6 Electric Imp
-// This file is licensed under the MIT License
-// http://opensource.org/licenses/MIT
-
 class mLab {
-
+    // Copyright (c) 2015-6 Electric Imp
+    // This file is licensed under the MIT License
+    // http://opensource.org/licenses/MIT
+    
     static version = [1,0,0];
 
     static API_BASE = "https://api.mlab.com/api/1/";
@@ -57,7 +56,6 @@ class mLab {
     // that match the query parameter
     function update(collection, multi, q, updateModifier, cb = null) {
         if (_noDbCheck(cb)) return;
-
         local reqUrl = API_BASE + "databases/" + _db + "/collections/" + collection + "?apiKey=" + _apiKey;
         if (q != null) reqUrl += "&" + _formatQuery(q);
         reqUrl += "&m=" + multi;
@@ -74,6 +72,7 @@ class mLab {
     }
 
     //-------------------- PRIVATE METHODS --------------------//
+    
     // Checks if a DB is set, and invokes the cb if not
     function _noDbCheck(cb) {
         if (_db == null) {
