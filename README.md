@@ -4,7 +4,7 @@ The mLab library is a wrapper class for the [mLab](https://mlab.com/) Data API. 
 
 For information about getting started with MongoLab and acquiring your MongoLab API key, see the [mLab Data API](http://docs.mlab.com/data-api/) documentation.
 
-**Note** Although this code is version 1.0.0, it is functionally equivalent to our mongoLab library, which this library replaces.
+**Note** Although this code is version 1.0.0, it is functionally equivalent to version 2.0.0. of our mongoLab library, which this library replaces.
 
 ## Class Usage
 
@@ -18,11 +18,11 @@ db <- mlab("<-- API_KEY -->", "<-- DATABASE_NAME -->");
 
 ### Callbacks
 
-All methods in this class that interact with the database take an optional callback parameter. The callback takes three parameters: `err`, `response`, `data`:
+All methods in this class that interact with the database take an optional callback parameter. The callback takes three parameters: *err*, *response* and *data*:
 
-- The `err` parameter will be `null` in a successful request, or contain a string describing the error.
-- The `resp` parameter is the [response table](https://electricimp.com/docs/api/httprequest/sendasync/) returned from the request.
-- The `data` parameter will contain the decoded data from the request.
+- The *err* parameter will be `null` in a successful request, or contain a string describing the error.
+- The *response* parameter is the [response table](https://electricimp.com/docs/api/httprequest/sendasync/) returned from the request.
+- The *data* parameter will contain the decoded data from the request.
 
 ```squirrel
 mlab.getDatabases(function(err, resp, databases) {
@@ -41,10 +41,10 @@ mlab.getDatabases(function(err, resp, databases) {
 
 All methods in the mLab class (with the exception of *use()* and *getDatabases()*) require an active database. The active database can be set using the second parameter of the constructor (suggested method), or by invoking with *use()* method with the desired database as the parameter.
 
-
 ## Class Methods
 
 ### use(*db*)
+
 The *use()* method can be used to change the active database (ie. what database we’re running our queries against). This method should not be required in the majority of applications as the database should be set in the constructor.
 
 ```squirrel
@@ -52,6 +52,7 @@ db.use("someOtherDatabase");
 ```
 
 ### getDatabases(*[callback]*)
+
 The *getDatabases()* method lists all of the databases attached to the account associated with the API key.
 
 ```squirrel
@@ -90,7 +91,7 @@ The *find()* method invokes a query against the specified collection.
 
 If an empty table is passed to the *query* parameter, find will return all records in the collection, otherwise, *find()* will execute the specified query, and return the results.
 
-*Information about building queries can be found in [mLab’s documentation](http://docs.mongodb.org/v2.6/reference/operator/query/).*
+**Note** Information about building queries can be found in [mLab’s documentation](http://docs.mongodb.org/v2.6/reference/operator/query/).
 
 ```squirrel
 // Return all users
@@ -101,7 +102,7 @@ db.find("users", {}, function(err, resp, users) {
     }
 
     foreach(user in users) {
-      server.log(http.jsonencode(user));
+        server.log(http.jsonencode(user));
     }
 });
 ```
@@ -116,7 +117,7 @@ db.find("users", { "verified": { "$exists": false } }, function(err, resp, users
     }
 
     foreach(user in users) {
-      server.log(user._id["$oid"] + ": " + user.username);
+        server.log(user._id["$oid"] + ": " + user.username);
     }
 });
 ```
@@ -145,7 +146,7 @@ device.on("data", function(data) {
 
 ### update(*collection, multi, q, updateModfier[, callback]*)
 
-The *update()* method updates a collection's records that match the specified query.
+The *update()* method updates a collection’s records that match the specified query.
 
 If the *multi* parameter is set to `false`, MongoLab will only update a single record, if the *multi* parameter is set to `true`, MongoLab will update all matching records. The *updateModifier* parameter can either be an object (in which case update will replace the record with the specified object) or contain an [Update Action](http://docs.mongodb.org/v2.6/reference/method/db.collection.update/#update-method-examples) (in which case update will take the specified action on all matching records).
 
