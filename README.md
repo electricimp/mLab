@@ -13,7 +13,7 @@ For information about getting started with MongoLab and acquiring your MongoLab 
 To create a new MongoDB object you will need your API key. You may also supply an optional database parameter to set the active database. If no database is selected, all methods that require a database will invoke the callback with an error until a database is selected with the *use()* method.
 
 ```squirrel
-db <- mlab("<-- API_KEY -->", "<-- DATABASE_NAME -->");
+db <- mLab("<-- API_KEY -->", "<-- DATABASE_NAME -->");
 ```
 
 ### Callbacks
